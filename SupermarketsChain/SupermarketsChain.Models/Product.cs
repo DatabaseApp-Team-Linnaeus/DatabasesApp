@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public class Product
     {
@@ -25,8 +26,6 @@
         public int MeasureId { get; set; }
 
         public virtual Measure Measure { get; set; }
-
-        public int ProductTaxId { get; set; }
 
         public virtual ProductTax ProductTax { get; set; }
 

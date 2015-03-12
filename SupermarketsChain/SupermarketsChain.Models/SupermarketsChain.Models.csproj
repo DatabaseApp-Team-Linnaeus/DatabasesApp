@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,7 +41,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Expence.cs" />
-    <Compile Include="Key.cs" />
     <Compile Include="Measure.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="ProductTax.cs" />

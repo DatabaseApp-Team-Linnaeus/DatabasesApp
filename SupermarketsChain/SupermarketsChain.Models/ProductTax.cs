@@ -1,11 +1,14 @@
 ﻿namespace SupermarketsChain.Models
 {
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public class ProductTax
     {
-        public int Tax { get; set; }
+        [ForeignKey("Product")]
+        public int Id { get; set; }
 
-        public int ProductId { get; set; }
+        public int TaxValue { get; set; }
 
-        public Product Product { get; set; }
+        public virtual Product Product { get; set; }
     }
 }
