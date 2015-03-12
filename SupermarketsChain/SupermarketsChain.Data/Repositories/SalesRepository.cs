@@ -1,12 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SupermarketsChain.Data.Repositories
+﻿namespace SupermarketsChain.Data.Repositories
 {
-    class SalesRepository
+    using System;
+    using System.Linq;
+
+    using SupermarketsChain.Data.Repositories.Contracts;
+    using SupermarketsChain.Models;
+
+    internal class SalesRepository : GenericRepository<Sale>, ISalesRepository
     {
+        public SalesRepository(ISupermarketsChainDbContext supermarketsChainDbContext)
+            : base(supermarketsChainDbContext)
+        {
+        }
+
+        public IQueryable<Sale> GetAllByDateInterval(DateTime startDate, DateTime endDate)
+        {
+            return this.Context.Sales.Where(x => x.SoldDate >= startDate && x.SoldDate <= endDate);
+        }
     }
 }

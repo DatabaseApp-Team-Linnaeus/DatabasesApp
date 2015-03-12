@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SupermarketsChain.Data.Repositories.Contracts
+﻿namespace SupermarketsChain.Data.Repositories.Contracts
 {
-    interface ISalesRepository
+    using System;
+    using System.Linq;
+
+    using SupermarketsChain.Models;
+
+    public interface ISalesRepository : IGenericRepository<Sale>
     {
+        IQueryable<Sale> GetAllByDateInterval(DateTime startDate, DateTime endDate);
     }
 }
