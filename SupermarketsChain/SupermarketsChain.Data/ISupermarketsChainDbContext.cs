@@ -1,18 +1,27 @@
-﻿﻿namespace SupermarketsChain.Data.Contracts
+﻿﻿namespace SupermarketsChain.Data
  {
-     public interface IVotingSystemDbContext
+     using System.Data.Entity;
+     using System.Data.Entity.Infrastructure;
+
+     using SupermarketsChain.Models;
+
+     public interface ISupermarketsChainDbContext
      {
-         IDbSet<Poll> Polls { get; set; }
+         IDbSet<Expence> Expences { get; set; }
 
-         IDbSet<Vote> Votes { get; set; }
+         IDbSet<Measure> Measures { get; set; }
 
-         IDbSet<Question> Question { get; set; }
+         IDbSet<Product> Products { get; set; }
 
-         IDbSet<Answer> Answers { get; set; }
+         IDbSet<Sale> Sales { get; set; }
 
-         IDbSet<Candidate> Candidates { get; set; }
+         IDbSet<ProductTax> ProductTaxes { get; set; }
 
-         IDbSet<IdentificationCode> IdentificationCodes { get; set; }
+         IDbSet<Supermarket> Supermarkets { get; set; }
+
+         IDbSet<Town> Towns { get; set; }
+
+         IDbSet<Vendor> Vernors { get; set; }
 
          IDbSet<TEntity> Set<TEntity>() where TEntity : class;
 
