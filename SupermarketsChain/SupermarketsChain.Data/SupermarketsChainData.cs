@@ -9,7 +9,7 @@
 
     public class SupermarketsChainData : ISupermarketsChainData
     {
-        private readonly ISupermarketsChainDbContext context;
+        private ISupermarketsChainDbContext context;
 
         private readonly Dictionary<Type, object> repositories = new Dictionary<Type, object>();
 

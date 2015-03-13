@@ -1,9 +1,6 @@
 namespace SupermarketsChain.Data.Migrations
 {
-    using System;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
-    using System.Linq;
 
     using SupermarketsChain.Models;
 
@@ -11,7 +8,8 @@ namespace SupermarketsChain.Data.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            this.AutomaticMigrationsEnabled = true;
+            this.AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(SupermarketsChain.Data.SupermarketsChainDbContext context)
