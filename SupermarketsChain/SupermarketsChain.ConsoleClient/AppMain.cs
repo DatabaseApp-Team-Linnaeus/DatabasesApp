@@ -8,11 +8,10 @@
         public static void Main(string[] args)
         {
             var context = new SupermarketsChainDbContext();
-            // this throws exeption - use only context
-            //var data = new SupermarketsChainData(context);
-            context.Towns.Add(new Town() { Name = "Vraca" });
+            var data = new SupermarketsChainData(context);
+            data.Towns.Add(new Town() { Name = "Sofia" });
 
-            context.SaveChanges();
+            data.SaveChanges();
         }
     }
 }
