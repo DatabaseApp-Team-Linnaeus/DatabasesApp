@@ -4,7 +4,7 @@ namespace SupermarketsChain.Data.Migrations
 
     using SupermarketsChain.Models;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<SupermarketsChain.Data.SupermarketsChainDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<SupermarketsChainDbContext>
     {
         public Configuration()
         {
@@ -12,7 +12,7 @@ namespace SupermarketsChain.Data.Migrations
             this.AutomaticMigrationDataLossAllowed = true;
         }
 
-        protected override void Seed(SupermarketsChain.Data.SupermarketsChainDbContext context)
+        protected override void Seed(SupermarketsChainDbContext context)
         {
             context.Measures.Add(new Measure() { Name = "kilogram" });
         }
