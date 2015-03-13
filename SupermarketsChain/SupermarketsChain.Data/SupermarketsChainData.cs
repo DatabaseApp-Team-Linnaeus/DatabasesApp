@@ -11,11 +11,12 @@
     {
         private ISupermarketsChainDbContext context;
 
-        private readonly Dictionary<Type, object> repositories = new Dictionary<Type, object>();
+        private readonly IDictionary<Type, object> repositories;
 
         public SupermarketsChainData(ISupermarketsChainDbContext supermarketsChainDbContext)
         {
             this.context = supermarketsChainDbContext;
+            this.repositories = new Dictionary<Type, object>();
         }
 
         public ISupermarketsChainDbContext Context
@@ -78,7 +79,7 @@
         {
             get
             {
-                return (SalesRepository)this.GetRepository<Sale>();
+                return (ISalesRepository)this.GetRepository<Sale>();
             }
         }
 
@@ -93,12 +94,13 @@
             {
                 var type = typeof(GenericRepository<T>);
 
-                if (typeof(T).IsAssignableFrom(typeof(Sale)))
+                if (typeof(Sale).IsAssignableFrom(typeof(T)))
                 {
                     type = typeof(SalesRepository);
                 }
 
-                this.repositories.Add(typeof(T), Activator.CreateInstance(type, this.context));
+                var newRepo = Activator.CreateInstance(type, this.context);
+                this.repositories.Add(typeof(T), newRepo);
             }
 
             return (IGenericRepository<T>)this.repositories[typeof(T)];

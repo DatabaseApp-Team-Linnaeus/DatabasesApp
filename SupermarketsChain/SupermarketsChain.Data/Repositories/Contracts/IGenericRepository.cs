@@ -8,17 +8,17 @@
     {
         IQueryable<T> All();
 
-        IQueryable<T> Search(Expression<Func<T, bool>> conditions);
+        IQueryable<T> Find(Expression<Func<T, bool>> expression);
 
         T GetById(object id);
 
-        void Add(T entity);
+        T Add(T entity);
 
-        T Delete(T entity);
+        T Update(T entity);
 
-        void Update(T entity);
+        void Delete(T entity);
 
-        T DeleteById(object id);
+        void Detach(T entity);
 
         void SaveChanges();
     }

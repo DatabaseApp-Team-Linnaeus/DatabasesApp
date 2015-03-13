@@ -6,7 +6,7 @@
     using SupermarketsChain.Data.Repositories.Contracts;
     using SupermarketsChain.Models;
 
-    internal class SalesRepository : GenericRepository<Sale>, ISalesRepository
+    public class SalesRepository : GenericRepository<Sale>, ISalesRepository
     {
         public SalesRepository(ISupermarketsChainDbContext supermarketsChainDbContext)
             : base(supermarketsChainDbContext)

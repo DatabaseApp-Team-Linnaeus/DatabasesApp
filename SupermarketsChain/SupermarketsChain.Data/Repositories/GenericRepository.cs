@@ -8,84 +8,76 @@
 
     using SupermarketsChain.Data.Repositories.Contracts;
 
-    internal class GenericRepository<T> : IGenericRepository<T> where T : class
+    public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-        protected readonly ISupermarketsChainDbContext Context;
-
-        protected GenericRepository(ISupermarketsChainDbContext supermarketsChainDbContext)
+        public GenericRepository(ISupermarketsChainDbContext context)
         {
-            this.Context = supermarketsChainDbContext;
+            this.Context = context;
+            this.DbSet = this.Context.Set<T>();
         }
+
+        protected ISupermarketsChainDbContext Context { get; set; }
+
+        protected IDbSet<T> DbSet { get; set; }
 
         public IQueryable<T> All()
         {
-            return this.Context.Set<T>();
+            return this.DbSet;
         }
 
-        public IQueryable<T> Search(Expression<Func<T, bool>> conditions)
+        public IQueryable<T> Find(Expression<Func<T, bool>> expression)
         {
-            return this.All().Where(conditions);
+            return this.DbSet.Where(expression);
         }
 
         public T GetById(object id)
         {
-            return this.Context.Set<T>().Find(id);
+            return this.DbSet.Find(id);
         }
 
-        public void Add(T entity)
+        public T Add(T entity)
         {
-            DbEntityEntry entry = this.Context.Entry(entity);
-            if (entry.State != EntityState.Detached)
-            {
-                entry.State = EntityState.Added;
-            }
-            else
-            {
-                this.Context.Set<T>().Add(entity);
-            }
-        }
-
-        public void Update(T entity)
-        {
-            DbEntityEntry entry = this.Context.Entry(entity);
-            if (entry.State == EntityState.Detached)
-            {
-                this.Context.Set<T>().Attach(entity);
-            }
-
-            entry.State = EntityState.Modified;
-        }
-
-        public T Delete(T entity)
-        {
-            DbEntityEntry entry = this.Context.Entry(entity);
-            if (entry.State != EntityState.Deleted)
-            {
-                entry.State = EntityState.Deleted;
-            }
-            else
-            {
-                this.Context.Set<T>().Remove(entity);
-            }
-
+            this.ChangeState(entity, EntityState.Added);
             return entity;
         }
 
-        public T DeleteById(object id)
+        public T Update(T entity)
         {
-            var entity = this.GetById(id);
-
-            if (entity != null)
-            {
-                this.Delete(entity);
-            }
-
+            this.ChangeState(entity, EntityState.Modified);
             return entity;
+        }
+
+        public void Delete(T entity)
+        {
+            this.ChangeState(entity, EntityState.Deleted);
+        }
+
+        public void Detach(T entity)
+        {
+            var entry = this.Context.Entry(entity);
+            entry.State = EntityState.Detached;
         }
 
         public void SaveChanges()
         {
             this.Context.SaveChanges();
+        }
+
+        private void ChangeState(T entity, EntityState state)
+        {
+            var entry = this.AttachIfDetached(entity);
+            entry.State = state;
+        }
+
+        private DbEntityEntry AttachIfDetached(T entity)
+        {
+            var entry = this.Context.Entry(entity);
+            if (entry.State == EntityState.Detached)
+            {
+                this.DbSet.Attach(entity);
+            }
+
+            return entry;
         }
     }
 }
