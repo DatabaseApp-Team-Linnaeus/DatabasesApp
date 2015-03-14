@@ -42,8 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConsoleClient.cs" />
+    <Compile Include="Expense.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="VendorSalesReport.cs" />
+    <Compile Include="Vendor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
