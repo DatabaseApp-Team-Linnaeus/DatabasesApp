@@ -1,38 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SupermarketsChain.ConsoleClient.Infrastructure
+﻿namespace SupermarketsChain.ConsoleClient.Infrastructure
 {
     using Ninject.Modules;
 
-    class CustumeModule : INinjectModule
+    using SupermarketsChain.Data;
+
+    internal class CustumeModule : NinjectModule
     {
-        public string Name
+        public override void Load()
         {
-            get { throw new NotImplementedException(); }
-        }
-
-        public void OnLoad(Ninject.IKernel kernel)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void OnUnload(Ninject.IKernel kernel)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void OnVerifyRequiredModules()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Ninject.IKernel Kernel
-        {
-            get { throw new NotImplementedException(); }
+            this.Bind<ISupermarketsChainDbContext>().To<SupermarketsChainDbContext>();
+            this.Bind<ISupermarketsChainData>().To<SupermarketsChainData>();
         }
     }
 }

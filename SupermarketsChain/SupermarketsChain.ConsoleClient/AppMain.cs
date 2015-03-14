@@ -1,5 +1,6 @@
 ﻿namespace SupermarketsChain.ConsoleClient
 {
+    using SupermarketsChain.ConsoleClient.Infrastructure;
     using SupermarketsChain.Data;
     using SupermarketsChain.Models;
 
@@ -7,9 +8,8 @@
     {
         public static void Main(string[] args)
         {
-            var context = new SupermarketsChainDbContext();
-            var data = new SupermarketsChainData(context);
-            data.Towns.Add(new Town() { Name = "Sofia" });
+            var data = ObjectFactory.Get<ISupermarketsChainData>();
+            data.Towns.Add(new Town() { Name = "Plovdiv" });
 
             data.SaveChanges();
         }

@@ -9,14 +9,14 @@
 
     public static class ObjectFactory
     {
-        private static readonly IKernel m_kernel = new StandardKernel();
+        private static readonly IKernel MKernel = new StandardKernel(new CustumeModule());
 
         /// <summary>
         /// Static accessor to the Ninject kernel
         /// </summary>
         public static IKernel Kernel
         {
-            get { return m_kernel; }
+            get { return MKernel; }
         }
 
         /// <summary>
@@ -81,16 +81,6 @@
         public static T TryGet<T>(string name)
         {
             return Kernel.TryGet<T>(name);
-        }
-
-        /// <summary>
-        /// Load a new Ninject dependency module into the kernel
-        /// </summary>
-        /// <param name="module">The module to load</param>
-        public static void Load(INinjectModule module)
-        {
-            Kernel.Bind<ISupermarketsChainData>().To<SupermarketsChainData>();
-            Kernel.Load(module);
         }
     }
 }
