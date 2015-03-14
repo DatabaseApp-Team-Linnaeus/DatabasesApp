@@ -6,13 +6,13 @@
     public class Vendor
     {
         private readonly List<Expense> expenses = new List<Expense>(); 
-        
-        public string Name { get; set; }
 
         public Vendor(string name)
         {
             this.Name = name;
         }
+
+        public string Name { get; set; }
 
         public IEnumerable<Expense> Expenses
         {
