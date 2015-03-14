@@ -21,7 +21,7 @@
 
          IDbSet<Town> Towns { get; set; }
 
-         IDbSet<Vendor> Vernors { get; set; }
+         IDbSet<Vendor> Vendors { get; set; }
 
          IDbSet<TEntity> Set<TEntity>() where TEntity : class;
 
