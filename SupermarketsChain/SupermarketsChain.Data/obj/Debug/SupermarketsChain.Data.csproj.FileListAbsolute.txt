@@ -1,0 +1,12 @@
+F:\SoftUni\Level 3\02 DatabaseAplications\Teamwork\trunk\SupermarketsChain\SupermarketsChain.Data\bin\Debug\SupermarketsChain.Data.dll.config
+F:\SoftUni\Level 3\02 DatabaseAplications\Teamwork\trunk\SupermarketsChain\SupermarketsChain.Data\bin\Debug\EntityFramework.dll
+F:\SoftUni\Level 3\02 DatabaseAplications\Teamwork\trunk\SupermarketsChain\SupermarketsChain.Data\bin\Debug\EntityFramework.SqlServer.dll
+F:\SoftUni\Level 3\02 DatabaseAplications\Teamwork\trunk\SupermarketsChain\SupermarketsChain.Data\bin\Debug\SupermarketsChain.Models.dll
+F:\SoftUni\Level 3\02 DatabaseAplications\Teamwork\trunk\SupermarketsChain\SupermarketsChain.Data\bin\Debug\SupermarketsChain.Models.pdb
+F:\SoftUni\Level 3\02 DatabaseAplications\Teamwork\trunk\SupermarketsChain\SupermarketsChain.Data\bin\Debug\EntityFramework.xml
+F:\SoftUni\Level 3\02 DatabaseAplications\Teamwork\trunk\SupermarketsChain\SupermarketsChain.Data\bin\Debug\EntityFramework.SqlServer.xml
+F:\SoftUni\Level 3\02 DatabaseAplications\Teamwork\trunk\SupermarketsChain\SupermarketsChain.Data\obj\Debug\SupermarketsChain.Data.csprojResolveAssemblyReference.cache
+F:\SoftUni\Level 3\02 DatabaseAplications\Teamwork\trunk\SupermarketsChain\SupermarketsChain.Data\obj\Debug\SupermarketsChain.Data.dll
+F:\SoftUni\Level 3\02 DatabaseAplications\Teamwork\trunk\SupermarketsChain\SupermarketsChain.Data\obj\Debug\SupermarketsChain.Data.pdb
+F:\SoftUni\Level 3\02 DatabaseAplications\Teamwork\trunk\SupermarketsChain\SupermarketsChain.Data\bin\Debug\SupermarketsChain.Data.dll
+F:\SoftUni\Level 3\02 DatabaseAplications\Teamwork\trunk\SupermarketsChain\SupermarketsChain.Data\bin\Debug\SupermarketsChain.Data.pdb

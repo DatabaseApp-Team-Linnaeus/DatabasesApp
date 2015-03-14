@@ -1,0 +1,4 @@
+F:\SoftUni\Level 3\02 DatabaseAplications\Teamwork\trunk\SupermarketsChain\SupermarketsChain.Models\bin\Debug\SupermarketsChain.Models.dll
+F:\SoftUni\Level 3\02 DatabaseAplications\Teamwork\trunk\SupermarketsChain\SupermarketsChain.Models\bin\Debug\SupermarketsChain.Models.pdb
+F:\SoftUni\Level 3\02 DatabaseAplications\Teamwork\trunk\SupermarketsChain\SupermarketsChain.Models\obj\Debug\SupermarketsChain.Models.dll
+F:\SoftUni\Level 3\02 DatabaseAplications\Teamwork\trunk\SupermarketsChain\SupermarketsChain.Models\obj\Debug\SupermarketsChain.Models.pdb
