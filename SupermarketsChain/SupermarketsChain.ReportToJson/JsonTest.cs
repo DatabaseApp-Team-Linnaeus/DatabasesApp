@@ -30,7 +30,7 @@
             foreach (var file in obj)
             {
                 string json = JsonConvert.SerializeObject(file, Formatting.Indented);
-                System.IO.File.WriteAllText(@"D:\" + file.ProductId + ".json", json);
+                System.IO.File.WriteAllText(@"D:\Json-Reports\" + file.ProductId + ".json", json);
             }
         }
     }
