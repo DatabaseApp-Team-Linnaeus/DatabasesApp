@@ -1,6 +1,0 @@
-F:\SoftUni\Level 3\02 DatabaseAplications\Teamwork\trunk\SupermarketsChain\SupermarketsChain.Exporters.Xml\bin\Debug\SupermarketsChain.Exporters.Xml.exe.config
-F:\SoftUni\Level 3\02 DatabaseAplications\Teamwork\trunk\SupermarketsChain\SupermarketsChain.Exporters.Xml\bin\Debug\SupermarketsChain.Exporters.Xml.exe
-F:\SoftUni\Level 3\02 DatabaseAplications\Teamwork\trunk\SupermarketsChain\SupermarketsChain.Exporters.Xml\bin\Debug\SupermarketsChain.Exporters.Xml.pdb
-F:\SoftUni\Level 3\02 DatabaseAplications\Teamwork\trunk\SupermarketsChain\SupermarketsChain.Exporters.Xml\obj\Debug\SupermarketsChain.Exporters.Xml.csprojResolveAssemblyReference.cache
-F:\SoftUni\Level 3\02 DatabaseAplications\Teamwork\trunk\SupermarketsChain\SupermarketsChain.Exporters.Xml\obj\Debug\SupermarketsChain.Exporters.Xml.exe
-F:\SoftUni\Level 3\02 DatabaseAplications\Teamwork\trunk\SupermarketsChain\SupermarketsChain.Exporters.Xml\obj\Debug\SupermarketsChain.Exporters.Xml.pdb
