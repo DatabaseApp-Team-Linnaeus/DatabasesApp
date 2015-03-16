@@ -19,6 +19,7 @@
             this.repositories = new Dictionary<Type, object>();
         }
 
+        // TODO: refactor (auto properties, private setter)
         public ISupermarketsChainDbContext Context
         {
             get
@@ -64,6 +65,14 @@
             get
             {
                 return this.GetRepository<Supermarket>();
+            }
+        }
+
+        public IGenericRepository<Vendor> Vendors
+        {
+            get
+            {
+                return this.GetRepository<Vendor>();
             }
         }
 

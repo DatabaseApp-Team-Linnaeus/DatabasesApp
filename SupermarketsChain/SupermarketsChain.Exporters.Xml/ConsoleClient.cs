@@ -11,6 +11,9 @@ namespace SupermarketsChain.Exporters.Xml
     using System.Linq;
     using System.Xml.Linq;
 
+    using SupermarketsChain.ConsoleClient.Infrastructure;
+    using SupermarketsChain.Data;
+
     using XmlExporterConsoleClient;
 
     public static class ConsoleClient
@@ -35,10 +38,27 @@ namespace SupermarketsChain.Exporters.Xml
             // Modify the next two lines to save the XML in a desired location
             // Directory.CreateDirectory(@"c:\temp\XML");
             doc.Save(@"vendors.xml");
+
+            var data = ObjectFactory.Get<ISupermarketsChainData>();
+
+            //var obj =
+            //      data.Sales.GetAllByDateInterval(new DateTime(1950, 1, 1), DateTime.Now)
+            //       .GroupBy(y => new { y.Product, y.Product.Vendor })
+            //          .Select(
+            //              x => new TestDTO
+            //              {
+            //                  ProductId = x.Key.Product.Id,
+            //                  ProductName = x.Key.Product.Name,
+            //                  VendorName = x.Key.Product.Vendor.Name,
+            //                  TotalQuantity = x.Sum(y => y.Quantity),
+            //                  TotalCost = x.Sum(y => y.Quantity * y.PricePerUnit),
+            //              });
+
         }
 
+
         // Formatted this way for clarity as to which goes where :)
-        public static XDocument XDocument(List<Vendor> vendors)
+        private static XDocument XDocument(List<Vendor> vendors)
         {
             var doc = new XDocument(
                 new XDeclaration("1.0", "utf-8", null),

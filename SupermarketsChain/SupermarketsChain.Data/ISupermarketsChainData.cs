@@ -17,6 +17,8 @@
 
         IGenericRepository<Supermarket> Supermarkets { get; }
 
+        IGenericRepository<Vendor> Vendors { get; }
+
         IGenericRepository<Town> Towns { get; }
 
         ISalesRepository Sales { get; }
