@@ -128,7 +128,7 @@ namespace SupermarketsChain.Data.Migrations
                                            },
                                        new Product
                                            {
-                                               Name = "Lan Cable",
+                                               Name = "LAN Cable",
                                                Vendor = vendors[this.random.Next(vendors.Count)],
                                                Measure = measures[this.random.Next(measures.Count)]
                                            },
@@ -152,7 +152,7 @@ namespace SupermarketsChain.Data.Migrations
                                            },
                                        new Product
                                            {
-                                               Name = "Wisky",
+                                               Name = "Whiskey",
                                                Vendor = vendors[this.random.Next(vendors.Count)],
                                                Measure = measures[this.random.Next(measures.Count)]
                                            },
@@ -177,8 +177,8 @@ namespace SupermarketsChain.Data.Migrations
         {
             var vendors = new List<Vendor>
                             {
-                                new Vendor { Name = "Bosh" },
-                                new Vendor { Name = "Simens" },
+                                new Vendor { Name = "Bosch" },
+                                new Vendor { Name = "Siemens" },
                                 new Vendor { Name = "Toshiba" },
                                 new Vendor { Name = "FF" },
                                 new Vendor { Name = "K-Classics" },
