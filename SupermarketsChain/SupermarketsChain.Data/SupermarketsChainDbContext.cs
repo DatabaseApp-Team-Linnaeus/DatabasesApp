@@ -11,7 +11,7 @@
         {
         }
 
-        public IDbSet<Expense> Expenses { get; set; }
+        public IDbSet<Expence> Expences { get; set; }
 
         public IDbSet<Measure> Measures { get; set; }
 

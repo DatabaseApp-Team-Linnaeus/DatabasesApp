@@ -19,7 +19,6 @@
             this.repositories = new Dictionary<Type, object>();
         }
 
-        // TODO: refactor (auto properties, private setter)
         public ISupermarketsChainDbContext Context
         {
             get
@@ -28,11 +27,11 @@
             }
         }
 
-        public IGenericRepository<Expense> Expenses
+        public IGenericRepository<Expence> Expences
         {
             get
             {
-                return this.GetRepository<Expense>();
+                return this.GetRepository<Expence>();
             }
         }
 
@@ -65,14 +64,6 @@
             get
             {
                 return this.GetRepository<Supermarket>();
-            }
-        }
-
-        public IGenericRepository<Vendor> Vendors
-        {
-            get
-            {
-                return this.GetRepository<Vendor>();
             }
         }
 

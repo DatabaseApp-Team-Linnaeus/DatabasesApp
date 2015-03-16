@@ -6,14 +6,12 @@
 
     public class AppMain
     {
-        public static void Main()
+        public static void Main(string[] args)
         {
             var data = ObjectFactory.Get<ISupermarketsChainData>();
             data.Towns.Add(new Town() { Name = "Plovdiv" });
-            data.Towns.Add(new Town() { Name = "Pleven" });
 
             data.SaveChanges();
-
         }
     }
 }

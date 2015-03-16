@@ -1,14 +1,11 @@
 ﻿namespace SupermarketsChain.Exportes.PDF
 {
     using System;
-    using System.Data.Entity;
+    using System.Collections.Generic;
     using System.IO;
     using System.Linq;
-    using System.Xml;
-
     using iTextSharp.text;
     using iTextSharp.text.pdf;
-
     using SupermarketsChain.ConsoleClient.Infrastructure;
     using SupermarketsChain.Data;
 
@@ -16,99 +13,117 @@
     {
         private static void Main()
         {
+            // Performance
+            //var data = ObjectFactory.Get<ISupermarketsChainData>();
+            //var obj =
+            //    data.Sales.GetAllByDateInterval(new DateTime(1950, 1, 1), DateTime.Now)
+            //        .Select(
+            //            s =>
+            //                {
+            //                    s.PricePerUnit,
+            //                    s.Quantity
+            //                })
+            //        .ToList();
 
             var data = ObjectFactory.Get<ISupermarketsChainData>();
-
             var obj = data.Sales.GetAllByDateInterval(new DateTime(1950, 1, 1), DateTime.Now);
+
+
+            var dateFromExport = new List<String>();
 
             foreach (var sales in obj)
             {
-                Console.WriteLine(sales.Id);
+                dateFromExport.Add(sales.ProductId.ToString());
+                dateFromExport.Add(sales.Quantity.ToString());
+                dateFromExport.Add(sales.PricePerUnit.ToString());
+                dateFromExport.Add(sales.SupermarketId.ToString());
+                dateFromExport.Add(sales.SaleCost.ToString());
+
             }
 
-           // ExportDataToPDFTable();  
+            ExportDataToPDFTable(dateFromExport);
         }
 
-        private static void ExportDataToPDFTable()
+        private static void ExportDataToPDFTable(List<string> dateFromExport)
         {
-            Document doc = new Document(PageSize.A4, 10, 10, 42, 35);
+            var doc = new Document(PageSize.A4, 10, 10, 10, 10);
             try
             {
-                //Create Document class object and set its size to letter and give space left, right, Top, Bottom Margin
-
-                FileStream fs = new FileStream(
+                // Create Document class object and set its size to letter and give space left, right, Top, Bottom Margin
+                var fs = new FileStream(
                     "Chapter1_Example1.pdf",
                     FileMode.Create,
                     FileAccess.Write,
                     FileShare.None);
                 PdfWriter wri = PdfWriter.GetInstance(doc, fs);
 
-                doc.Open(); //Open Document to write
+                doc.Open(); // Open Document to write
 
                 Font font8 = FontFactory.GetFont("ARIAL", 10);
                 Font headerFont = FontFactory.GetFont("ARIAL", 10);
                 headerFont.SetStyle(33);
 
                 // MY TESTING 
-                //font8.Color = new BaseColor(Color.Red);
+                // font8.Color = new BaseColor(Color.Red);
+
+                // Row with table name
+                var tableHeader = new PdfPTable(1);
+                var tableHeaderCell = new PdfPCell(new Phrase(new Chunk("Aggregated Sales Report", headerFont)));
+
+                tableHeaderCell.HorizontalAlignment = Element.ALIGN_CENTER;
+                tableHeaderCell.FixedHeight = 30.0f;
+                tableHeader.AddCell(tableHeaderCell);
+                tableHeader.SpacingBefore = 15f; // Give some space after the text or it may overlap the table
+
+                doc.Add(tableHeader);
 
 
-                //Write some content
-                Paragraph paragraph =
-                    new Paragraph("Aggregated Sales Report");
-
-                // DataTable dt = GetDataTable();
-
-                if (true) //dt != null)
+                if (true)    // Chek if date is empty
                 {
-                    //Craete instance of the pdf table and set the number of column in that table
-                    PdfPTable PdfTable = new PdfPTable(5); //dt.Columns.Count);
-                    PdfPCell PdfPCell = null;
+                    // Craete instance of the pdf table and set the number of column in that table
+                    var pdfPTable = new PdfPTable(5);
+                    PdfPCell pdfPCell = null;
+
+                    // Add Header of the pdf table
+                    pdfPCell = new PdfPCell(new Phrase(new Chunk("Product", headerFont)));
+                    pdfPCell.HorizontalAlignment = Element.ALIGN_CENTER;
+                    pdfPTable.AddCell(pdfPCell);
+
+                    pdfPCell = new PdfPCell(new Phrase(new Chunk("Quantity", headerFont)));
+                    pdfPCell.HorizontalAlignment = Element.ALIGN_CENTER;
+                    pdfPTable.AddCell(pdfPCell);
+
+                    pdfPCell = new PdfPCell(new Phrase(new Chunk("Unit Price", headerFont)));
+                    pdfPCell.HorizontalAlignment = Element.ALIGN_CENTER;
+                    pdfPTable.AddCell(pdfPCell);
 
 
-                    //Add Header of the pdf table
-                    PdfPCell = new PdfPCell(new Phrase(new Chunk("Product", headerFont)));
-                    PdfTable.AddCell(PdfPCell);
+                    pdfPCell = new PdfPCell(new Phrase(new Chunk("Location", headerFont)));
+                    pdfPCell.HorizontalAlignment = Element.ALIGN_CENTER;
+                    pdfPTable.AddCell(pdfPCell);
 
-                    PdfPCell = new PdfPCell(new Phrase(new Chunk("Quantity", headerFont)));
-                    PdfTable.AddCell(PdfPCell);
-
-                    PdfPCell = new PdfPCell(new Phrase(new Chunk("Unit Price", headerFont)));
-                    PdfTable.AddCell(PdfPCell);
-
-
-                    PdfPCell = new PdfPCell(new Phrase(new Chunk("Location", headerFont)));
-                    PdfTable.AddCell(PdfPCell);
-
-                    PdfPCell = new PdfPCell(new Phrase(new Chunk("Sum", headerFont)));
-                    PdfTable.AddCell(PdfPCell);
+                    pdfPCell = new PdfPCell(new Phrase(new Chunk("Sum", headerFont)));
+                    pdfPCell.HorizontalAlignment = Element.ALIGN_CENTER;
+                    pdfPTable.AddCell(pdfPCell);
 
 
 
-                    //How add the data from datatable to pdf table
-                    for (int rows = 0; rows < 2 /*dt.Rows.Count*/; rows++)
+                    // How add the data from datatable to pdf table
+                    foreach (var cellInfo in dateFromExport)
                     {
-                        for (int column = 0; column < 5 /*dt.Columns.Count*/; column++)
-                        {
-                            PdfPCell =
+                        pdfPCell =
                                 new PdfPCell(
                                     new Phrase(
-                                        new Chunk( /*dt.Rows[rows][column].ToString()*/ rows + " " + column, font8)));
-                            PdfTable.AddCell(PdfPCell);
-                        }
+                                        new Chunk(cellInfo, font8)));
+                        pdfPTable.AddCell(pdfPCell);
                     }
 
-                    PdfTable.SpacingBefore = 15f; // Give some space after the text or it may overlap the table
-
-                    doc.Add(paragraph); // add paragraph to the document
-                    doc.Add(PdfTable); // add pdf table to the document
-
+                    doc.Add(pdfPTable); // add pdf table to the document
                 }
-
             }
             catch (DocumentException docEx)
             {
-                //handle pdf document exception if any
+                // handle pdf document exception if any
             }
             catch (IOException ioEx)
             {
@@ -120,9 +135,8 @@
             }
             finally
             {
-                //Close document and writer
+                // Close document and writer
                 doc.Close();
-
             }
         }
     }

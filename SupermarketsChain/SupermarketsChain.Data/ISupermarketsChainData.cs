@@ -7,7 +7,7 @@
     {
         ISupermarketsChainDbContext Context { get; }
 
-        IGenericRepository<Expense> Expenses { get; }
+        IGenericRepository<Expence> Expences { get; }
 
         IGenericRepository<Measure> Measures { get; }
 
@@ -16,8 +16,6 @@
         IGenericRepository<ProductTax> ProductTaxes { get; }
 
         IGenericRepository<Supermarket> Supermarkets { get; }
-
-        IGenericRepository<Vendor> Vendors { get; }
 
         IGenericRepository<Town> Towns { get; }
 
