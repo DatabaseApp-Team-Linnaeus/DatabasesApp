@@ -2,9 +2,9 @@
 {
     using System;
 
-    public class Expense
+    public class tempExpense
     {
-        public Expense(DateTime date, decimal expenseValue)
+        public tempExpense(DateTime date, decimal expenseValue)
         {
             this.Date = date;
             this.ExpenseValue = expenseValue;

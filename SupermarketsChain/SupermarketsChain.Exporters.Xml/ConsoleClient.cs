@@ -17,15 +17,15 @@ namespace SupermarketsChain.Exporters.Xml
     {
         public static void Main(string[] args)
         {
-            var vendors = new List<Vendor>
+            var vendors = new List<tempVendor>
             {
-                new Vendor("Nestle Sofia Corp.")
+                new tempVendor("Nestle Sofia Corp.")
                     .WithExpenses(DateTime.Parse("Jul-2013"), 30.00m)
                     .WithExpenses(DateTime.Parse("Aug-2013"), 40.00m),
-                new Vendor("Targovishte Bottling Company Ltd.")
+                new tempVendor("Targovishte Bottling Company Ltd.")
                     .WithExpenses(DateTime.Parse("Jul-2013"), 200.00m)
                     .WithExpenses(DateTime.Parse("Aug-2013"), 180.00m),
-                new Vendor("Zagorka Corp.")
+                new tempVendor("Zagorka Corp.")
                     .WithExpenses(DateTime.Parse("Jul-2013"), 120.00m)
                     .WithExpenses(DateTime.Parse("Aug-2013"), 180.00m)
             };
@@ -38,7 +38,7 @@ namespace SupermarketsChain.Exporters.Xml
         }
 
         // Formatted this way for clarity as to which goes where :)
-        public static XDocument XDocument(List<Vendor> vendors)
+        public static XDocument XDocument(List<tempVendor> vendors)
         {
             var doc = new XDocument(
                 new XDeclaration("1.0", "utf-8", null),
