@@ -13,8 +13,7 @@
             data.Towns.Add(new Town() { Name = "Pleven" });
 
             data.SaveChanges();
-            
-            
+
         }
     }
 }

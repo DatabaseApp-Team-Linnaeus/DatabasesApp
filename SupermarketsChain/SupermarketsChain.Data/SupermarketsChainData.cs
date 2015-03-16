@@ -27,11 +27,11 @@
             }
         }
 
-        public IGenericRepository<Expence> Expences
+        public IGenericRepository<Expense> Expences
         {
             get
             {
-                return this.GetRepository<Expence>();
+                return this.GetRepository<Expense>();
             }
         }
 

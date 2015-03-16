@@ -7,7 +7,7 @@
     {
         ISupermarketsChainDbContext Context { get; }
 
-        IGenericRepository<Expence> Expences { get; }
+        IGenericRepository<Expense> Expences { get; }
 
         IGenericRepository<Measure> Measures { get; }
 
