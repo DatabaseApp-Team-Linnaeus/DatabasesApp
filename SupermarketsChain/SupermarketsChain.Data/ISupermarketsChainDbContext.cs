@@ -7,7 +7,7 @@
 
      public interface ISupermarketsChainDbContext
      {
-         IDbSet<Expense> Expences { get; set; }
+         IDbSet<Expense> Expenses { get; set; }
 
          IDbSet<Measure> Measures { get; set; }
 

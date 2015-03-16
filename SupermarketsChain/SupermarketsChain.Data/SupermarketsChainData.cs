@@ -27,7 +27,7 @@
             }
         }
 
-        public IGenericRepository<Expense> Expences
+        public IGenericRepository<Expense> Expenses
         {
             get
             {
