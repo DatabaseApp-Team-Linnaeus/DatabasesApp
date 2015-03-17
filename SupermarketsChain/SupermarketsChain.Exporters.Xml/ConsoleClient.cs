@@ -41,7 +41,21 @@ namespace SupermarketsChain.Exporters.Xml
 
             var data = ObjectFactory.Get<ISupermarketsChainData>();
 
-            //data
+            //var obj =
+            //    data.Sales.GetAllByDateInterval(new DateTime(1950, 1, 1), DateTime.Now)
+            //     .GroupBy(y => new { y.Product, y.Product.Vendor })
+            //        .Select(
+            //            x => new TestDTO
+            //            {
+            //                ProductId = x.Key.Product.Id,
+            //                ProductName = x.Key.Product.Name,
+            //                VendorName = x.Key.Product.Vendor.Name,
+            //                TotalQuantity = x.Sum(y => y.Quantity),
+            //                TotalCost = x.Sum(y => y.Quantity * y.PricePerUnit),
+            //            });
+
+            //var obj = data.Vendors.All()
+            //        .GroupBy(x=> new {x.ExpenseDate, x.Expenses})
         }
 
         // Formatted this way for clarity as to which goes where :)
