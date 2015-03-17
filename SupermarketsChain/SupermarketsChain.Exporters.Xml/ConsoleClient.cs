@@ -15,6 +15,8 @@ namespace SupermarketsChain.Exporters.Xml
     using SupermarketsChain.Data;
 
     using XmlExporterConsoleClient;
+    using SupermarketsChain.Exporters.Xml.Dto;
+    using SupermarketsChain.Models;
 
     public static class ConsoleClient
     {
@@ -54,8 +56,16 @@ namespace SupermarketsChain.Exporters.Xml
             //                TotalCost = x.Sum(y => y.Quantity * y.PricePerUnit),
             //            });
 
-            //var obj = data.Vendors.All()
-            //        .GroupBy(x=> new {x.ExpenseDate, x.Expenses})
+            var obj = from vend in data.Vendors.All()
+                      join exp in data.Expenses.All() on vend.Id equals exp.VendorId
+                      select new XmlDto()
+                                 {
+                                     ExpenseValue = exp.ExpenseAmount,
+                                     VendorName = vend.Name,
+                                     Date = exp.DateOfExpense,
+                                 };
+            
+            Console.WriteLine();
         }
 
         // Formatted this way for clarity as to which goes where :)
