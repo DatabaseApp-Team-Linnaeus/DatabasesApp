@@ -13,6 +13,8 @@
 
         IGenericRepository<Product> Products { get; }
 
+        IGenericRepository<Vendor> Vendors { get; }
+
         IGenericRepository<ProductTax> ProductTaxes { get; }
 
         IGenericRepository<Supermarket> Supermarkets { get; }

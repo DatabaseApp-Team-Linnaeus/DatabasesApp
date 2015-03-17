@@ -67,6 +67,14 @@
             }
         }
 
+        public IGenericRepository<Vendor> Vendors
+        {
+            get
+            {
+                return this.GetRepository<Vendor>();
+            }
+        }
+
         public IGenericRepository<Town> Towns
         {
             get
