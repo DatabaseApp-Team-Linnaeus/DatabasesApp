@@ -3,9 +3,6 @@
     using System;
 
     using Ninject;
-    using Ninject.Modules;
-
-    using SupermarketsChain.Data;
 
     public static class ObjectFactory
     {

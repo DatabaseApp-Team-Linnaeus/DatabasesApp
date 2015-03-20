@@ -1,6 +1,7 @@
 ﻿namespace SupermarketsChain.ReportToJson
 {
     using System;
+    using System.IO;
     using System.Linq;
 
     using Newtonsoft.Json;
@@ -30,7 +31,7 @@
             foreach (var file in obj)
             {
                 string json = JsonConvert.SerializeObject(file, Formatting.Indented);
-                System.IO.File.WriteAllText(@"D:\" + file.ProductId + ".json", json);
+                File.WriteAllText(@"D:\" + file.ProductId + ".json", json);
             }
         }
     }

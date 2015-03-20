@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SupermarketsChain.Exporters.Xml.Dto
+﻿namespace SupermarketsChain.Exporters.Xml.Dto
 {
+    using System;
+
     public class XmlDto
     {
         public string VendorName { get; set; }
