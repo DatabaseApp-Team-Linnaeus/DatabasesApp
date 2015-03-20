@@ -25,6 +25,8 @@ namespace SupermarketsChain.Exporters.Xml
 
     public static class ConsoleClient
     {
+        private const string DateFormat = "dd-MMM-yyyy";
+
         public static void Main(string[] args)
         {
             #region
@@ -49,30 +51,17 @@ namespace SupermarketsChain.Exporters.Xml
             #endregion
             var context = ObjectFactory.Get<ISupermarketsChainData>();
             
-            var startDate = DateTime.Parse("1950-01-01");
-            var endDate = DateTime.Now;
-            var data = context.Sales.GetAllByDateInterval(startDate, endDate);
+            //var startDate = DateTime.Parse("1950-01-01");
+            //var endDate = DateTime.Now;
+            //var data = context.Sales.GetAllByDateInterval(startDate, endDate);
             
-            var query = from s in context.Sales.GetAllByDateInterval(startDate, endDate)
-            join v in context.Vendors.All() on s.Id equals v.Id
-            orderby
-              v.Name
-            select new {
-              v.Name,
-              Vendor = from ven in context.Vendors.All() select new {
-                        s.SoldDate,
-                        totalSum = (s.Quantity * s.PricePerUnit)
-                       }
-              
-            };
-
-            var vendors = context.Vendors.All()
+            var vendorSales = context.Vendors.All()
                 .Join(context.Sales.All(),
                 v => v.Id,
                 s => s.Id,
                 (v, s) => new { v, s })
-                .OrderBy(n => n.v.Name)
-                //.GroupBy(n => n.v.Name)
+                //.OrderBy(n => n.v.Name)
+                //.ThenBy(d=>d.s.SoldDate)
                 .Select(x =>
                 new
                     {
@@ -83,28 +72,33 @@ namespace SupermarketsChain.Exporters.Xml
                                         x.s.SoldDate,
                                         x.s.Quantity
                                     }
-                    }).GroupBy(y=>y.Name).ToList();
+                    })
+                //.OrderBy(x => x.Name)
+                //.ThenBy(x => x.Sales.SoldDate)
+                //.GroupBy(y => y.Name)
+                //.SelectMany(x => x)
+                ;
             var doc = new XElement("sales");
             Console.WriteLine();
-            //foreach (var q in query)
-            //{
-            //    var vendorXml = new XElement("sale", new XAttribute("vendor", q.Name));
 
 
 
-
-
-
-
-
-
-
-            //    ////Console.WriteLine("Vendor Name: {0} \n  Date sold: {1}\n     Sum: {2}",
-            //    ////    q.Name,
-            //    ////    q.SoldDate.ToString("MMMM-yyy", CultureInfo.InvariantCulture),
-            //    ////    q.totalSum);
-            //    ////Console.WriteLine("-----------------");
-            //}
+            foreach (var vendor in vendorSales)
+            {
+                var vendorXml = new XElement("sale",
+                    new XAttribute("vendor", vendor.Name));
+                
+                foreach (var s in vendorSales)
+                {
+                    var saleXml = new XElement("summary",
+                        new XAttribute("date",
+                            s.Sales.SoldDate.ToString(DateFormat, CultureInfo.InvariantCulture)),
+                            new XAttribute("total-sum", s.Sales.PricePerUnit * s.Sales.Quantity));
+                    vendorXml.Add(saleXml);
+                }
+                doc.Add(vendorXml);
+            }
+            doc.Save(@"report.xml");
         
 
 
