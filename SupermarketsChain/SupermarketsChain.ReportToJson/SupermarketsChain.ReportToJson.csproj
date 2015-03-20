@@ -64,7 +64,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="MongoImportScript.cmd" />
     <None Include="packages.config" />
+    <None Include="Settings.StyleCop" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SupermarketsChain.ConsoleClient\SupermarketsChain.ConsoleClient.csproj">
