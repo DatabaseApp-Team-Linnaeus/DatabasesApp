@@ -1,25 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
-using System.IO.Compression;
-using System.Data.OleDb;
-using SupermarketsChain.Models;
-using Microsoft.Office.Core;
-using Excel = Microsoft.Office.Interop.Excel;
-using System.Data;
-
-namespace SupermarketsChain.Importers.ZipExcel
+﻿namespace SupermarketsChain.Importers.ZipExcel
 {
+    using System;
+    using System.IO;
+    using System.IO.Compression;
+    using System.Data.OleDb;
+    using System.Data;
+
     internal class Program
     {
         private static void Main(string[] args)
         {
             string zipPath = @".\reports";
             string zipName = "Sample-Sales-Reports.zip";
-            //ZipFile.ExtractToDirectory(zipName, zipPath);
+            ZipFile.ExtractToDirectory(zipName, zipPath);
 
             var reportsDirectories = Directory.GetDirectories(zipPath);
             foreach (var directory in reportsDirectories)
@@ -46,8 +39,6 @@ namespace SupermarketsChain.Importers.ZipExcel
                     }
                 }
             }
-
-
         }
     }
 }
