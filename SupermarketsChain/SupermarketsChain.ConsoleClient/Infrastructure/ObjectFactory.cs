@@ -59,7 +59,7 @@
         }
 
         /// <summary>
-        /// Trys to get an object using Ninject
+        /// Tries to get an object using Ninject
         /// </summary>
         /// <typeparam name="T">The type of object to return</typeparam>
         /// <param name="type">The type of the object to get</param>
@@ -70,7 +70,7 @@
         }
 
         /// <summary>
-        /// Trys to get an object using Ninject
+        /// Tryies to get an object using Ninject
         /// </summary>
         /// <typeparam name="T">The type of object to get</typeparam>
         /// <param name="name">The name of the object</param>
