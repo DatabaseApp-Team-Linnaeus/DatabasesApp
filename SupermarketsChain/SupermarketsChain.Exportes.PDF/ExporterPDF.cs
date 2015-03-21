@@ -3,10 +3,9 @@
     using System;
     using System.Collections.Generic;
     using System.IO;
-
+    using System.Linq;
     using iTextSharp.text;
     using iTextSharp.text.pdf;
-
     using SupermarketsChain.ConsoleClient.Infrastructure;
     using SupermarketsChain.Data;
 
@@ -14,18 +13,7 @@
     {
         private static void Main()
         {
-            // Performance
-            //var data = ObjectFactory.Get<ISupermarketsChainData>();
-            //var obj =
-            //    data.Sales.GetAllByDateInterval(new DateTime(1950, 1, 1), DateTime.Now)
-            //        .Select(
-            //            s =>
-            //                {
-            //                    s.PricePerUnit,
-            //                    s.Quantity
-            //                })
-            //        .ToList();
-
+          
             var data = ObjectFactory.Get<ISupermarketsChainData>();
             var obj = data.Sales.GetAllByDateInterval(new DateTime(1950, 1, 1), DateTime.Now);
 
@@ -69,12 +57,21 @@
 
                 // Row with table name
                 var tableHeader = new PdfPTable(1);
+                tableHeader.TotalWidth = 500f;
+                tableHeader.LockedWidth = true;
+
                 var tableHeaderCell = new PdfPCell(new Phrase(new Chunk("Aggregated Sales Report", headerFont)));
 
                 tableHeaderCell.HorizontalAlignment = Element.ALIGN_CENTER;
                 tableHeaderCell.FixedHeight = 30.0f;
                 tableHeader.AddCell(tableHeaderCell);
                 tableHeader.SpacingBefore = 15f; // Give some space after the text or it may overlap the table
+
+                tableHeaderCell = new PdfPCell(new Phrase(
+                    new Chunk(
+                        " Date: " + DateTime.Today.ToString("dd-MM-yyyy"),
+                        font8)));
+                tableHeader.AddCell(tableHeaderCell);
 
                 doc.Add(tableHeader);
 
@@ -84,6 +81,11 @@
                     // Craete instance of the pdf table and set the number of column in that table
                     var pdfPTable = new PdfPTable(5);
                     PdfPCell pdfPCell = null;
+
+                    pdfPTable.TotalWidth = 500f;
+                    pdfPTable.LockedWidth = true;
+                    var widths = new float[] { 150f, 50f, 50f, 200f, 50f };
+                    pdfPTable.SetWidths(widths);
 
                     // Add Header of the pdf table
                     pdfPCell = new PdfPCell(new Phrase(new Chunk("Product", headerFont)));
@@ -119,7 +121,30 @@
                         pdfPTable.AddCell(pdfPCell);
                     }
 
-                    doc.Add(pdfPTable); // add pdf table to the document
+                    doc.Add(pdfPTable); // add pdf main content
+
+
+                    double totalSum = 0;
+
+                    for (int i = 4; i < dateFromExport.Count; i += 5)
+                    {
+                        totalSum = totalSum + Convert.ToDouble(dateFromExport[i]);
+                    }
+
+                    var tableFooter = new PdfPTable(2);
+
+                    tableFooter.TotalWidth = 500f;
+                    tableFooter.LockedWidth = true;
+                    widths = new float[] { 450f, 50f };
+                    tableFooter.SetWidths(widths);
+
+                    var tableFooterCell = new PdfPCell(new Phrase(new Chunk("Total sum", headerFont)));
+                    tableFooter.AddCell(tableFooterCell);
+
+                    tableFooterCell = new PdfPCell(new Phrase(new Chunk(totalSum.ToString(), headerFont)));
+                    tableFooter.AddCell(tableFooterCell);
+
+                    doc.Add(tableFooter);
                 }
             }
             catch (DocumentException docEx)
