@@ -8,7 +8,6 @@
     using iTextSharp.text.pdf;
     using SupermarketsChain.ConsoleClient.Infrastructure;
     using SupermarketsChain.Data;
-    using SupermarketsChain.Models;
 
     internal class ExporterPDF
     {
@@ -26,23 +25,7 @@
                                          s.Supermarket, 
                                          s.SaleCost
                                      });
-               
-
-
-            //          var employees =
-            //  sofztUniEntities.Employees.Join(
-            //  softUniEntities.Departments,
-            //  (e => e.DepartmentID),
-            //  (d => d.DepartmentID),
-            //  (e, d) => new
-            //  {
-            //      Employee = e.FirstName,
-            //      JobTitle = e.JobTitle,
-            //      Department = d.Name
-            //  }
-            //);
-
-
+ 
             var dateFromExport = new List<string>();
 
             foreach (var sales in obj)
@@ -143,7 +126,6 @@
                     doc.Add(pdfPTable); // add pdf main content
 
                     double totalSum = 0;
-
                     for (int i = 4; i < dateFromExport.Count; i += 5)
                     {
                         totalSum = totalSum + Convert.ToDouble(dateFromExport[i]);
