@@ -75,7 +75,7 @@
 
                 context.Vendors.Add(newVendor);
                 context.SaveChanges();
-
+                Console.WriteLine("Added Vendor {0}", vendorName);
                 vendorId = newVendor.Id;
             }
 
@@ -92,9 +92,8 @@
             {
                 expenses.Add(
                     new Expense { VendorId = vendorId, DateOfExpense = expenseDate, ExpenseAmount = expenseAmount });
-
                 context.SaveChanges();
-
+                Console.WriteLine("     Added expense to Vendor {0}",vendorName);
             }
         }
     }
