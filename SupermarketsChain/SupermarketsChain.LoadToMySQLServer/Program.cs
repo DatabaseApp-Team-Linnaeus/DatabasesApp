@@ -1,19 +1,17 @@
 ﻿
 
-namespace SupermarketsChain.LoadToMySQL
+namespace SupermarketsChain.LoadToMySQLServer
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Data;
-    using System.Drawing;
     using System.Linq;
     using System.Text;
+    using System.Threading.Tasks;
     using MySql.Data.MySqlClient;
-    using SupermarketsChain.Models;
+
     public class Program
     {
-        public static void Main()
+        static void Main()
         {
             string cs = "Server = localhost; Database = test; Uid = root; Pwd = 12345;";
 
@@ -38,10 +36,6 @@ namespace SupermarketsChain.LoadToMySQL
                     conn.Close();
                 }
             }
-
-
-
         }
-
     }
 }
