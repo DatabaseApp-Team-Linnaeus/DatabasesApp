@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SupermarketsChain.Data", "SupermarketsChain.Data\SupermarketsChain.Data.csproj", "{0795F22B-3DD5-4065-A36A-27E417D585B7}"
 EndProject
@@ -23,6 +23,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SupermarketsChain.Exportes.PDF", "SupermarketsChain.Exportes.PDF\SupermarketsChain.Exportes.PDF.csproj", "{664B86BE-8780-4BA0-80B9-1406A4EDBBA9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SupermarketsChain.SQLite", "SupermarketsChain.SQLite\SupermarketsChain.SQLite.csproj", "{A327B97A-B50D-4DF6-AC86-29596389FD44}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SupermarketsChain.Importers.XML", "SupermarketsChain.Importers.XML\SupermarketsChain.Importers.XML.csproj", "{900B138C-31DA-4251-B5D6-1D389B099B66}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,6 +60,10 @@ Global
 		{A327B97A-B50D-4DF6-AC86-29596389FD44}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A327B97A-B50D-4DF6-AC86-29596389FD44}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A327B97A-B50D-4DF6-AC86-29596389FD44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{900B138C-31DA-4251-B5D6-1D389B099B66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{900B138C-31DA-4251-B5D6-1D389B099B66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{900B138C-31DA-4251-B5D6-1D389B099B66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{900B138C-31DA-4251-B5D6-1D389B099B66}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
