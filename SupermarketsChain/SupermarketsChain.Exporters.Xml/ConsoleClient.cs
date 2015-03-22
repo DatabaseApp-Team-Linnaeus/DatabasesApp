@@ -1,6 +1,4 @@
-﻿// If you want to test it add this project to another solution.
-// The classes SaleDto and tempVendor are not needed, they just emulate the data.
-// TODO: Change the namespace or the project name/location in solution?
+﻿// TODO: Change the namespace or the project name/location in solution?
 // TODO: refactor into a method so it can be run easily from other places
 
 namespace SupermarketsChain.Exporters.Xml
@@ -16,7 +14,7 @@ namespace SupermarketsChain.Exporters.Xml
     using SupermarketsChain.Data;
 
     using XmlExporterConsoleClient;
-    ///
+    
     public static class ConsoleClient
     {
         private const string DateFormat = "dd-MMM-yyyy";
