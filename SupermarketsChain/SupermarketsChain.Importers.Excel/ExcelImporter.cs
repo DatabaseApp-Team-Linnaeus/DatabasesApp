@@ -3,17 +3,12 @@
     using System;
     using System.Globalization;
     using System.Data;
-    using System.Data.OleDb;
+    using Excel = Microsoft.Office.Interop.Excel;
     using System.IO;
     using System.IO.Compression;
 
     internal class ExcelImporter
     {
-        private const string ConnectionProvider = "Provider=Microsoft.ACE.OLEDB.12.0;";
-
-        private const string ConnectionProperties =
-            "Extended Properties=\"Excel 12.0;IMEX=1;HDR=NO;TypeGuessRows=0;ImportMixedTypes=Text\"";
-
         private string zipPath;
         private string zipName;
 
@@ -40,34 +35,35 @@
 
                 foreach (var file in files)
                 {
-                    var dataSource = "Data Source=" + file + ";";
-                    var connectionString = ConnectionProvider + dataSource + ConnectionProperties;
+                    var fileName = Path.GetFileName(file);
+                    string superMarketName = fileName.Substring(0, fileName.Length - "-Sales-Report-20-Jul-2014.xls".Length);
+                    Console.WriteLine(superMarketName);
 
-                    using (var conn = new OleDbConnection(connectionString))
+                    var application = new Excel.Application();
+                    var workbook = application.Workbooks.Open(Directory.GetCurrentDirectory() + file.Substring(1, file.Length- 1));
+                    var worksheet = workbook.ActiveSheet;
+                    Excel.Range excelRange = worksheet.UsedRange;
+                    object[,] valueArray = (object[,])excelRange.get_Value(
+                        Excel.XlRangeValueDataType.xlRangeValueDefault);
+
+                    for (int i = 4; i <= valueArray.GetLength(0)  - 1; i++)
                     {
-                        conn.Open();
-                        var sheets = conn.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, new object[] {null, null, null, "TABLE"});
-
-                        using (var cmd = conn.CreateCommand())
+                        Console.Write("{0}", i);
+                        var productName = valueArray[i, 1];
+                        var quantity = valueArray[i, 2];
+                        var unitPrice = valueArray[i, 3];
+                        var sum = valueArray[i, 4];
+                        Console.WriteLine("{0} - {1} - {2} - {3}", productName, quantity, unitPrice, sum);
+                        for (int j = 1; j <= valueArray.GetLength(1); j++)
                         {
-                            cmd.CommandText = "SELECT * FROM [" + sheets.Rows[0]["TABLE_NAME"] + "] ";
-                            var adapter = new OleDbDataAdapter(cmd);
-                            adapter.Fill(dataSet);
+                            //Console.Write("{0} - ", valueArray[i, j]);
                         }
-
-                        conn.Close();
-
-                        foreach (DataTable table in dataSet.Tables)
-                        {
-                            foreach (DataRow row in table.Rows)
-                            {
-                                foreach (DataColumn column in table.Columns)
-                                {
-                                    Console.WriteLine(row[column]);
-                                }
-                            }
-                        }
+                        Console.WriteLine();
                     }
+
+                    workbook.Close();
+                    application.Quit();
+                    GC.Collect();
                 }
             }
 
