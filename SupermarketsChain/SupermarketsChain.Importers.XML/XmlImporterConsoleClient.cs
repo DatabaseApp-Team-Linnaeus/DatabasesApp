@@ -30,7 +30,7 @@
             catch (FileNotFoundException e)
             {
 
-                Console.WriteLine("File not found. Stack trace:" + e.StackTrace);
+                Console.WriteLine("File not found. Stack trace:\n" + e.StackTrace);
             }
 
             var expensesByVendor =
