@@ -31,13 +31,16 @@ namespace SupermarketsChain.Data.Migrations
             var sales = new List<Sale>();
             for (int i = 0; i < 100; i++)
             {
+                var unitPrice = this.random.Next(1000);
+                var quantity = this.random.Next(1000);
                 sales.Add(new Sale
                               {
                                   Product = products[this.random.Next(products.Count)],
                                   Supermarket = supermarkets[this.random.Next(supermarkets.Count)],
                                   SoldDate = this.RandomDay(),
-                                  PricePerUnit = this.random.Next(1000),
-                                  Quantity = this.random.Next(1000)
+                                  PricePerUnit = unitPrice,
+                                  Quantity = quantity,
+                                  SaleCost = unitPrice * quantity
                               });
             }
 

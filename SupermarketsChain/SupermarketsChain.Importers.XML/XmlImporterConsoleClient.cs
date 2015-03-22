@@ -1,6 +1,8 @@
 ﻿namespace SupermarketsChain.Importers.Xml
 {
     using System;
+    using System.CodeDom;
+    using System.Collections.Generic;
     using System.Globalization;
     using System.IO;
     using System.Linq;
@@ -57,27 +59,43 @@
             }
         }
 
-        private static void AddVendorExpense(string vendorName, DateTime expenseDate, decimal expenseSum)
+        private static void AddVendorExpense(string vendorName, DateTime expenseDate, decimal expenseAmount)
         {
-            var context = ObjectFactory.Get<ISupermarketsChainData>();            
-                int vendorId;
-            var dataInDb= context.Vendors.All();
-                if (dataInDb.Any(v => v.Name == vendorName))
-                {
-                    vendorId = dataInDb.FirstOrDefault(v => v.Name == vendorName).Id;
-                }
-                else
-                {
-                    var newVendor = new Vendor { Name = vendorName };
+            var context = ObjectFactory.Get<ISupermarketsChainData>();
+            int vendorId;
+            var allVendors = context.Vendors.All();
+            
+            if (allVendors.Any(v => v.Name == vendorName))
+            {
+                vendorId = allVendors.FirstOrDefault(v => v.Name == vendorName).Id;
+            }
+            else
+            {
+                var newVendor = new Vendor { Name = vendorName };
 
-                    context.Vendors.Add(newVendor);
-                    context.SaveChanges();
-
-                    vendorId = newVendor.Id;
-                }
-
-                context.Expenses.Add(new Expense { VendorId = vendorId, DateOfExpense = expenseDate, ExpenseAmount = expenseSum });
+                context.Vendors.Add(newVendor);
                 context.SaveChanges();
+
+                vendorId = newVendor.Id;
+            }
+
+            var allExpenses = context.Expenses.All();
+            var expenses = context.Expenses;
+
+            var duplicateExpense = allExpenses
+                .Any(e =>
+                    e.DateOfExpense == expenseDate
+                    && e.ExpenseAmount == expenseAmount
+                    && e.VendorId == vendorId);
+
+            if (!duplicateExpense)
+            {
+                expenses.Add(
+                    new Expense { VendorId = vendorId, DateOfExpense = expenseDate, ExpenseAmount = expenseAmount });
+
+                context.SaveChanges();
+
+            }
         }
     }
 }

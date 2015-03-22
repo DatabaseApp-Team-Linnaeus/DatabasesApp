@@ -4,6 +4,12 @@
 
     public class Sale
     {
+        //Is this needed?
+        public Sale()
+        {
+            this.SaleCost = this.PricePerUnit * this.Quantity;
+        }
+
         public int Id { get; set; }
 
         public DateTime SoldDate { get; set; }
