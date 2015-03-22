@@ -53,10 +53,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConsoleClient.cs" />
-    <Compile Include="tempExpense.cs" />
+    <Compile Include="SaleDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="tempVendor.cs" />
-    <Compile Include="XmlDto.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
