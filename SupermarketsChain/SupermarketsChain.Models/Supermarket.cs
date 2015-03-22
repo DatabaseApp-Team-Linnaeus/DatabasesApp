@@ -22,7 +22,7 @@
 
         public int TownId { get; set; }
 
-        public virtual ICollection<Sale> Supermarkets
+        public virtual ICollection<Sale> Sales
         {
             get
             {
