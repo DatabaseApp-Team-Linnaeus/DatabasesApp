@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contexts\SqliteDbContext.cs" />
     <Compile Include="ISupermarketsChainData.cs" />
     <Compile Include="ISupermarketsChainDbContext.cs" />
     <Compile Include="Migrations\Configuration.cs" />
@@ -57,7 +58,7 @@
     <Compile Include="Repositories\GenericRepository.cs" />
     <Compile Include="Repositories\SalesRepository.cs" />
     <Compile Include="SupermarketsChainData.cs" />
-    <Compile Include="SupermarketsChainDbContext.cs" />
+    <Compile Include="Contexts\SupermarketsChainDbContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

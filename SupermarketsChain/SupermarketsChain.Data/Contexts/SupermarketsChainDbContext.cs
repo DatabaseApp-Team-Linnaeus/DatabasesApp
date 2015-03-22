@@ -1,4 +1,4 @@
-﻿namespace SupermarketsChain.Data
+﻿namespace SupermarketsChain.Data.Contexts
 {
     using System.Data.Entity;
 
