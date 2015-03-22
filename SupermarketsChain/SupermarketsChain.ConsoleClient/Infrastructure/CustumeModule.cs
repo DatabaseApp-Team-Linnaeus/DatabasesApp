@@ -3,6 +3,7 @@
     using Ninject.Modules;
 
     using SupermarketsChain.Data;
+    using SupermarketsChain.Data.Contexts;
 
     internal class CustumeModule : NinjectModule
     {

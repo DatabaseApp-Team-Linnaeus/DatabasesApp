@@ -1,4 +1,4 @@
-namespace SupermarketsChain.Data.Migrations
+namespace SupermarketsChain.SQLite.Migrations
 {
     using System;
     using System.Collections.Generic;
@@ -7,17 +7,17 @@ namespace SupermarketsChain.Data.Migrations
     using SupermarketsChain.Data.Contexts;
     using SupermarketsChain.Models;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<SupermarketsChainDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<SqliteDbContext>
     {
         private readonly Random random = new Random(0);
-
+     
         public Configuration()
         {
             this.AutomaticMigrationsEnabled = true;
-            this.AutomaticMigrationDataLossAllowed = false;
+            this.AutomaticMigrationDataLossAllowed = true;
         }
 
-        protected override void Seed(SupermarketsChainDbContext context)
+        protected override void Seed(SqliteDbContext context)
         {
             var towns = this.SeedTowns(context);
             var supermarkets = this.SeedSupermarkets(context, towns);
@@ -27,7 +27,7 @@ namespace SupermarketsChain.Data.Migrations
             this.SeedSales(context, products, supermarkets);
         }
 
-        private void SeedSales(SupermarketsChainDbContext context, IList<Product> products, IList<Supermarket> supermarkets)
+        private void SeedSales(SqliteDbContext context, IList<Product> products, IList<Supermarket> supermarkets)
         {
             var sales = new List<Sale>();
             for (int i = 0; i < 100; i++)
@@ -35,14 +35,14 @@ namespace SupermarketsChain.Data.Migrations
                 var unitPrice = this.random.Next(1000);
                 var quantity = this.random.Next(1000);
                 sales.Add(new Sale
-                              {
-                                  Product = products[this.random.Next(products.Count)],
-                                  Supermarket = supermarkets[this.random.Next(supermarkets.Count)],
-                                  SoldDate = this.RandomDay(),
-                                  PricePerUnit = unitPrice,
-                                  Quantity = quantity,
-                                  SaleCost = unitPrice * quantity
-                              });
+                {
+                    Product = products[this.random.Next(products.Count)],
+                    Supermarket = supermarkets[this.random.Next(supermarkets.Count)],
+                    SoldDate = this.RandomDay(),
+                    PricePerUnit = unitPrice,
+                    Quantity = quantity,
+                    SaleCost = unitPrice * quantity
+                });
             }
 
             foreach (var sale in sales)
@@ -53,7 +53,7 @@ namespace SupermarketsChain.Data.Migrations
             context.SaveChanges();
         }
 
-        private IList<Measure> SeedMeasures(SupermarketsChainDbContext context)
+        private IList<Measure> SeedMeasures(SqliteDbContext context)
         {
             var measures = new List<Measure>
                             {
@@ -72,7 +72,7 @@ namespace SupermarketsChain.Data.Migrations
             return measures;
         }
 
-        private IList<Product> SeedProducts(SupermarketsChainDbContext context, IList<Vendor> vendors, IList<Measure> measures)
+        private IList<Product> SeedProducts(SqliteDbContext context, IList<Vendor> vendors, IList<Measure> measures)
         {
             var products = new List<Product>
                                    {
@@ -177,7 +177,7 @@ namespace SupermarketsChain.Data.Migrations
             return products;
         }
 
-        private IList<Vendor> SeedVendors(SupermarketsChainDbContext context)
+        private IList<Vendor> SeedVendors(SqliteDbContext context)
         {
             var vendors = new List<Vendor>
                             {
@@ -198,7 +198,7 @@ namespace SupermarketsChain.Data.Migrations
             return vendors;
         }
 
-        private IList<Supermarket> SeedSupermarkets(SupermarketsChainDbContext context, IList<Town> towns)
+        private IList<Supermarket> SeedSupermarkets(SqliteDbContext context, IList<Town> towns)
         {
             var supermarkets = new List<Supermarket>
                                    {
@@ -278,7 +278,7 @@ namespace SupermarketsChain.Data.Migrations
             return supermarkets;
         }
 
-        private IList<Town> SeedTowns(SupermarketsChainDbContext context)
+        private IList<Town> SeedTowns(SqliteDbContext context)
         {
             var towns = new List<Town>
                             {

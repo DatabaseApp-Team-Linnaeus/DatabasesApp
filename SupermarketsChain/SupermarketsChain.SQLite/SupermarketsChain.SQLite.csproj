@@ -63,9 +63,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="SQLite.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SqliteDbContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -73,6 +73,10 @@
     <None Include="Settings.StyleCop" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SupermarketsChain.Data\SupermarketsChain.Data.csproj">
+      <Project>{0795F22B-3DD5-4065-A36A-27E417D585B7}</Project>
+      <Name>SupermarketsChain.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SupermarketsChain.Models\SupermarketsChain.Models.csproj">
       <Project>{DF3A7E9E-F66F-4923-BB8B-DD016F20728A}</Project>
       <Name>SupermarketsChain.Models</Name>
