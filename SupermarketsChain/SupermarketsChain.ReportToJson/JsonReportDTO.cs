@@ -2,7 +2,7 @@
 {
     using Newtonsoft.Json;
 
-    public class TestDTO
+    public class JsonReportDTO
     {
         [JsonProperty(PropertyName = "product-id")]
         public int ProductId { get; set; }

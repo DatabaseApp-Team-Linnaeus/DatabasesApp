@@ -9,17 +9,22 @@
     using SupermarketsChain.ConsoleClient.Infrastructure;
     using SupermarketsChain.Data;
 
-    public class JsonTest
+    public static class JsonExport
     {
         public static void Main()
+        {
+            
+        }
+
+        public static void Export(DateTime startDate, DateTime endDate)
         {
             var data = ObjectFactory.Get<ISupermarketsChainData>();
 
             var obj =
-                data.Sales.GetAllByDateInterval(new DateTime(1950, 1, 1), DateTime.Now)
+                data.Sales.GetAllByDateInterval(startDate, endDate)
                  .GroupBy(y => new { y.Product, y.Product.Vendor })
                     .Select(
-                        x => new TestDTO
+                        x => new JsonReportDTO
                                  {
                                      ProductId = x.Key.Product.Id,
                                      ProductName = x.Key.Product.Name,
