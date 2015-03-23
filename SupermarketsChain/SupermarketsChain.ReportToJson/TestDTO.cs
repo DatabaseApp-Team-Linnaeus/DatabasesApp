@@ -17,6 +17,6 @@
         public int TotalQuantity { get; set; }
 
         [JsonProperty(PropertyName = "total-incomes")]
-        public long TotalCost { get; set; }     
+        public decimal TotalCost { get; set; }     
     }
 }

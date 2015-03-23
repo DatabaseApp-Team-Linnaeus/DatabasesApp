@@ -4,7 +4,6 @@
 
     public class Sale
     {
-        //Is this needed?
         public Sale()
         {
             this.SaleCost = this.PricePerUnit * this.Quantity;
@@ -16,9 +15,9 @@
 
         public int Quantity { get; set; }
 
-        public int PricePerUnit { get; set; }
+        public decimal PricePerUnit { get; set; }
 
-        public long SaleCost { get; set; }
+        public decimal SaleCost { get; set; }
 
         public virtual Supermarket Supermarket { get; set; }
 
