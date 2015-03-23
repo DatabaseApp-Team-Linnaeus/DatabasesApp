@@ -1,9 +1,11 @@
 ﻿namespace SupermarketsChain.Data
 {
+    using System;
+
     using SupermarketsChain.Data.Repositories.Contracts;
     using SupermarketsChain.Models;
 
-    public interface ISupermarketsChainData
+    public interface ISupermarketsChainData : IDisposable
     {
         ISupermarketsChainDbContext Context { get; }
 

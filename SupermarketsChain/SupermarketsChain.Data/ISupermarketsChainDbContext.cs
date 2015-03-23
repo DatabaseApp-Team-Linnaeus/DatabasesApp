@@ -1,11 +1,12 @@
 ﻿﻿namespace SupermarketsChain.Data
  {
+     using System;
      using System.Data.Entity;
      using System.Data.Entity.Infrastructure;
 
      using SupermarketsChain.Models;
 
-     public interface ISupermarketsChainDbContext
+     public interface ISupermarketsChainDbContext : IDisposable
      {
          IDbSet<Expense> Expenses { get; set; }
 

@@ -96,6 +96,11 @@
             return this.context.SaveChanges();
         }
 
+        public void Dispose()
+        {
+            this.Context.Dispose();
+        }
+
         private IGenericRepository<T> GetRepository<T>() where T : class
         {
             if (!this.repositories.ContainsKey(typeof(T)))
