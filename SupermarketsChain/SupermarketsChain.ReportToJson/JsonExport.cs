@@ -6,8 +6,8 @@
 
     using Newtonsoft.Json;
 
-    using SupermarketsChain.ConsoleClient.Infrastructure;
     using SupermarketsChain.Data;
+    using SupermarketsChain.Infrastructure.Infrastructure;
 
     public static class JsonExport
     {
@@ -36,7 +36,7 @@
             foreach (var file in obj)
             {
                 string json = JsonConvert.SerializeObject(file, Formatting.Indented);
-                File.WriteAllText(@"D:\" + file.ProductId + ".json", json);
+                File.WriteAllText(@"../../../Export/" + file.ProductId + ".json", json);
             }
         }
     }

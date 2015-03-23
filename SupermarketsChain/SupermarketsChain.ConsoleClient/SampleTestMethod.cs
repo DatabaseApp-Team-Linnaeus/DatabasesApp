@@ -1,6 +1,5 @@
 ﻿namespace SupermarketsChain.ConsoleClient
 {
-    using SupermarketsChain.ConsoleClient.Infrastructure;
     using SupermarketsChain.Data;
     using SupermarketsChain.Models;
 

@@ -1,1 +1,1 @@
-for /f %%f in ('dir /b d:\Json-Reports') do mongoimport -d SoftUni -c reports --jsonArray --file "d:\Json-Reports\%%f"
+for /f %%f in ('dir /b D:\Github\DataBaseApps\trunk\SupermarketsChain\Export') do mongoimport -d SoftUni -c reports --jsonArray --file "D:\Github\DataBaseApps\trunk\SupermarketsChain\Export\%%f"

@@ -1,16 +1,13 @@
 ﻿namespace SupermarketsChain.Importers.Xml
 {
     using System;
-    using System.CodeDom;
-    using System.Collections.Generic;
     using System.Globalization;
     using System.IO;
     using System.Linq;
-    using System.Runtime.CompilerServices;
     using System.Xml.Linq;
 
-    using SupermarketsChain.ConsoleClient.Infrastructure;
     using SupermarketsChain.Data;
+    using SupermarketsChain.Infrastructure.Infrastructure;
     using SupermarketsChain.Models;
 
     class XmlImporterConsoleClient

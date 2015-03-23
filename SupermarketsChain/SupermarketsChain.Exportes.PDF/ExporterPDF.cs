@@ -4,10 +4,11 @@
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
+
     using iTextSharp.text;
     using iTextSharp.text.pdf;
-    using SupermarketsChain.ConsoleClient.Infrastructure;
     using SupermarketsChain.Data;
+    using SupermarketsChain.Infrastructure.Infrastructure;
 
     internal class ExporterPDF
     {

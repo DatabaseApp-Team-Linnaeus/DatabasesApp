@@ -69,13 +69,13 @@
     <None Include="Settings.StyleCop" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SupermarketsChain.ConsoleClient\SupermarketsChain.ConsoleClient.csproj">
-      <Project>{5eca11dd-12f9-47f2-bc27-63e7965f5743}</Project>
-      <Name>SupermarketsChain.ConsoleClient</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SupermarketsChain.Data\SupermarketsChain.Data.csproj">
       <Project>{0795f22b-3dd5-4065-a36a-27e417d585b7}</Project>
       <Name>SupermarketsChain.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SupermarketsChain.Infrastructure\SupermarketsChain.Infrastructure.csproj">
+      <Project>{CFEBECC1-1B2B-445A-BBA1-A977AF6CE5F9}</Project>
+      <Name>SupermarketsChain.Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\SupermarketsChain.Models\SupermarketsChain.Models.csproj">
       <Project>{DF3A7E9E-F66F-4923-BB8B-DD016F20728A}</Project>

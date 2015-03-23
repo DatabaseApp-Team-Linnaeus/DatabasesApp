@@ -4,9 +4,9 @@
     using System.Collections.Generic;
     using System.Linq;
 
-    using SupermarketsChain.ConsoleClient.Infrastructure;
     using SupermarketsChain.Data;
     using SupermarketsChain.Data.Contexts;
+    using SupermarketsChain.Infrastructure.Infrastructure;
     using SupermarketsChain.Models;
     using SupermarketsChain.ReportToJson;
 

@@ -10,8 +10,8 @@ namespace SupermarketsChain.Exporters.Xml
     using System.Linq;
     using System.Xml.Linq;
 
-    using SupermarketsChain.ConsoleClient.Infrastructure;
     using SupermarketsChain.Data;
+    using SupermarketsChain.Infrastructure.Infrastructure;
 
     using XmlExporterConsoleClient;
     
